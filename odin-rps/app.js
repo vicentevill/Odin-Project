@@ -3,6 +3,7 @@ const paperButton = document.querySelector(".Paper");
 const scissorsButton = document.querySelector(".Scissors");
 const playButton = document.querySelector(".Play");
 const result = document.querySelector(".Result");
+const options = document.querySelectorAll(".Option");
 
 let playerSection = "";
 
@@ -38,6 +39,19 @@ playButton.addEventListener("click", () => {
   }
 });
 
+function resetOptions() {
+  for (let i = 0; i < options.length; i++) {
+    options[i].style.outline = "";
+  }
+}
+
+for (let i = 0; i < options.length; i++) {
+  options[i].addEventListener("click", () => {
+    resetOptions();
+    options[i].style.outline = "4px solid white";
+  });
+}
+
 function calculateWinner() {
   const cpuOptions = ["Rock", "Paper", "Scissors"];
 
@@ -52,11 +66,11 @@ function calculateWinner() {
   console.log(cpuSelection);
   // console.log(winning[playerSection].includes(cpuSelection));
   if (playerSection === cpuSelection) {
-    result.innerText = `Result: You picked '${playerSection}', your opponent picked '${cpuSelection}'. It's a tie.`;
+    result.innerHTML = `You picked '${playerSection}', your opponent picked '${cpuSelection}'. <strong>It's a tie.</strong>`;
   } else if (winning[playerSection].includes(cpuSelection)) {
-    result.innerText = `Result: You picked '${playerSection}', your opponent picked '${cpuSelection}'. You lose.`;
+    result.innerHTML = `You picked '${playerSection}', your opponent picked '${cpuSelection}'. <strong>You lose.</strong>`;
   } else if (!winning[playerSection].includes(cpuSelection)) {
-    result.innerText = `Result: You picked '${playerSection}', your opponent picked '${cpuSelection}'. You win!`;
+    result.innerHTML = `You picked '${playerSection}', your opponent picked '${cpuSelection}'. <strong>You win!</strong>`;
   }
 
   // result.innerText = `Result: You picked '${playerSection}', your opponent picked '${cpuSelection}'`;
