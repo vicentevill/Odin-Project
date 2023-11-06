@@ -8,18 +8,6 @@ const options = document.querySelectorAll(".Option");
 let playerSection = "";
 
 let cpuSelection = "";
-//
-// let count = 0;
-
-// const test = document.querySelector(".test");
-
-// test.innerText = count;
-
-// test.addEventListener("click", () => {
-//   count++;
-//   test.innerText = count;
-// });
-//
 
 rockButton.addEventListener("click", () => {
   playerSection = "Rock";
@@ -72,6 +60,4 @@ function calculateWinner() {
   } else if (!winning[playerSection].includes(cpuSelection)) {
     result.innerHTML = `You picked '${playerSection}', your opponent picked '${cpuSelection}'. <strong>You win!</strong>`;
   }
-
-  // result.innerText = `Result: You picked '${playerSection}', your opponent picked '${cpuSelection}'`;
 }
