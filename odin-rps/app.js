@@ -51,8 +51,6 @@ function calculateWinner() {
 
   cpuSelection = cpuOptions[Math.floor(Math.random() * 3)];
 
-  console.log(cpuSelection);
-  // console.log(winning[playerSection].includes(cpuSelection));
   if (playerSection === cpuSelection) {
     result.innerHTML = `You picked '${playerSection}', your opponent picked '${cpuSelection}'. <strong>It's a tie.</strong>`;
   } else if (winning[playerSection].includes(cpuSelection)) {
@@ -60,4 +58,8 @@ function calculateWinner() {
   } else if (!winning[playerSection].includes(cpuSelection)) {
     result.innerHTML = `You picked '${playerSection}', your opponent picked '${cpuSelection}'. <strong>You win!</strong>`;
   }
+
+  setInterval(() => {
+    result.innerHTML = "Pick one then click play!";
+  }, 5000);
 }
