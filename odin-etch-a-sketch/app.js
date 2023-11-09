@@ -1,3 +1,8 @@
+//expandable grid
+//color picker
+//darkener
+//switch between hover and click
+
 const items = 16;
 
 for (let i = 0; i < items; i++) {
