@@ -24,6 +24,7 @@ html {
 
 body {
   min-height: 100vh;
+  display: grid;
 }
 
 img,
@@ -32,4 +33,13 @@ svg,
 video {
   display: block;
   max-width: 100%;
+}
+
+.Test {
+  height: 1rem;
+  width: 1rem;
+}
+
+.Grid {
+  display: grid;
 }
