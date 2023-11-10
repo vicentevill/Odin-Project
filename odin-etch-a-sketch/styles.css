@@ -36,10 +36,10 @@ video {
 }
 
 .Test {
-  height: 1rem;
-  width: 1rem;
 }
 
 .Grid {
   display: grid;
+  width: 20rem;
+  height: 20rem;
 }
