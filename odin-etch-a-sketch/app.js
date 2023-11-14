@@ -1,3 +1,7 @@
+const Run = document.querySelector(".Run");
+Run.addEventListener("click", () => {
+  resetCellColors();
+});
 //expandable grid
 //color picker
 //darkener
@@ -45,12 +49,21 @@ generateGrid = () => {
   for (let i = 0; i < gridUnits.length; i++) {
     gridUnits[i].addEventListener("mousemove", () => {
       if (isMouseDown) {
-        gridUnits[i].style.background = "#fff";
+        gridUnits[i].style.background = `${brushColor.value}`;
       }
     });
     gridUnits[i].addEventListener("click", () => {
-      gridUnits[i].style.background = "#fff";
+      gridUnits[i].style.background = `${brushColor.value}`;
     });
+  }
+
+  resetCellColors();
+};
+
+resetCellColors = () => {
+  const gridUnits = document.querySelectorAll(".Test");
+  for (let i = 0; i < gridUnits.length; i++) {
+    gridUnits[i].style.background = "unset";
   }
 };
 

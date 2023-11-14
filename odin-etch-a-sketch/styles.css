@@ -36,7 +36,8 @@ video {
 }
 
 .Test {
-  cursor: pointer;
+  cursor: crosshair;
+  user-select: none;
 }
 
 .Grid {
