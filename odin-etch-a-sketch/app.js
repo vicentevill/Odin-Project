@@ -64,8 +64,11 @@ generateGrid = () => {
     gridUnits[i].addEventListener("mousedown", (event) => {
       if (event.button === 0) {
         gridUnits[i].style.background = `${brushColor.value}`;
-      } else if (event.button === 2) {
-        filterValues[i] = filterValues[i] - 0.1;
+      } else if (event.button === 2 && filterValues[i] > 0) {
+        filterValues[i] -= 0.1;
+        filterValues[i] = Math.round(filterValues[i] * 10) / 10;
+
+        console.log(filterValues[i]);
 
         gridUnits[i].style.filter = `brightness(${filterValues[i]})`;
       }
