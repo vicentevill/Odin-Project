@@ -113,13 +113,18 @@ const generateGrid = () => {
 
     //Add events for when cell is clicked
     gridCells[i].addEventListener("click", () => {
-      if (isDarkener) {
+      if (isDarkener && gridCells[i].style.background) {
         filterValues[i] -= 0.1;
         filterValues[i] = Math.round(filterValues[i] * 10) / 10;
         gridCells[i].style.filter = `brightness(${filterValues[i]})`;
-      } else if (isEraser) {
+        console.log("Success");
+      }
+      if (isEraser) {
         gridCells[i].style.background = "";
-      } else gridCells[i].style.background = `${brushColor.value}`;
+      }
+      if (!isDarkener && !isEraser) {
+        gridCells[i].style.background = `${brushColor.value}`;
+      }
     });
   }
 
