@@ -1,15 +1,16 @@
-const Run = document.querySelector(".Run");
-Run.addEventListener("click", () => {
-  resetCellColors();
-});
+// const Run = document.querySelector(".Run");
+// Run.addEventListener("click", () => {
+//   resetCellColors();
+// });
 
 const grid = document.querySelector(".Grid");
 const gridRange = document.querySelector("#Grid-range");
-const label = document.querySelector("label");
+const gridLabel = document.querySelector(".Grid-range-label");
 const brushColor = document.querySelector("#Brush-color");
 const reset = document.querySelector(".Reset");
 const eraser = document.querySelector(".Eraser");
 const darkener = document.querySelector(".Darkener");
+const colorWrapper = document.querySelector(".Brush-color-wrapper");
 
 let isMouseDown = false;
 
@@ -18,6 +19,12 @@ let isEraser = false;
 let isDarkener = false;
 
 let filterValues = [];
+
+let items = gridRange.value;
+
+colorWrapper.style.background = brushColor.value;
+
+gridLabel.innerHTML = `Grid Size ${items} x ${items} (${items * items} cells)`;
 
 document.addEventListener("mousedown", () => {
   isMouseDown = true;
@@ -34,14 +41,17 @@ eraser.addEventListener("click", () => {
   isDarkener = false;
 });
 
-let items = gridRange.value;
-label.innerHTML = items;
-
 gridRange.addEventListener("input", () => {
   items = gridRange.value;
-  label.innerHTML = items;
+  gridLabel.innerHTML = `Grid Size ${items} x ${items} (${
+    items * items
+  } cells)`;
   console.log(items);
   generateGrid();
+});
+
+brushColor.addEventListener("input", () => {
+  colorWrapper.style.background = brushColor.value;
 });
 
 reset.addEventListener("click", () => {
@@ -50,8 +60,16 @@ reset.addEventListener("click", () => {
 
 darkener.addEventListener("click", () => {
   isDarkener = !isDarkener;
+
   isEraser = false;
 });
+
+const resetCellColors = () => {
+  const gridCells = document.querySelectorAll(".Cell");
+  for (let i = 0; i < gridCells.length; i++) {
+    gridCells[i].style.background = "";
+  }
+};
 
 const generateGrid = () => {
   //Reset filterValues
@@ -75,7 +93,7 @@ const generateGrid = () => {
   //Add events for when the mouse moves over a cell
   for (let i = 0; i < gridCells.length; i++) {
     gridCells[i].addEventListener("mousemove", () => {
-      if (isMouseDown) {
+      if (isMouseDown && !isDarkener) {
         gridCells[i].style.background = `${brushColor.value}`;
       }
       if (isMouseDown && isEraser) {
@@ -97,13 +115,6 @@ const generateGrid = () => {
 
   //Reset cell background colors
   resetCellColors();
-};
-
-const resetCellColors = () => {
-  const gridCells = document.querySelectorAll(".Cell");
-  for (let i = 0; i < gridCells.length; i++) {
-    gridCells[i].style.background = "";
-  }
 };
 
 //init

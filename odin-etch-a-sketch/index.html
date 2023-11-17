@@ -9,8 +9,11 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   </head>
   <body>
-    <div class="Run">Test</div>
-    <label for="grid-range"></label>
+    <!-- <div class="Run">Test</div> -->
+    <h1>Etch-A-Sketch</h1>
+    <div class="Grid"></div>
+    <label class="Grid-range-label" for="grid-range"></label>
+
     <input
       type="range"
       name="grid-range"
@@ -19,11 +22,13 @@
       max="32"
       value="16"
     />
-    <input type="color" name="" id="Brush-color" />
-    <div class="Reset">Reset</div>
-    <div class="Grid"></div>
+    <label class="Brush-color-label" for="brush-color">Color Picker</label>
+    <div class="Brush-color-wrapper">
+      <input type="color" name="brush-color" id="Brush-color" value="#0075ff" />
+    </div>
     <div class="Eraser">Eraser</div>
     <div class="Darkener">Darkener</div>
+    <div class="Reset">Reset Grid</div>
   </body>
   <script src="app.js"></script>
 </html>
