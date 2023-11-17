@@ -28,17 +28,21 @@ gridLabel.innerHTML = `Grid Size ${items} x ${items} (${items * items} cells)`;
 
 document.addEventListener("mousedown", () => {
   isMouseDown = true;
-  console.log(isMouseDown);
 });
 
 document.addEventListener("mouseup", () => {
   isMouseDown = false;
-  console.log(isMouseDown);
 });
 
 eraser.addEventListener("click", () => {
   isEraser = !isEraser;
   isDarkener = false;
+  if (isEraser) {
+    eraser.style.background = "#0075ff";
+    darkener.style.background = "";
+  } else {
+    eraser.style.background = "";
+  }
 });
 
 gridRange.addEventListener("input", () => {
@@ -46,7 +50,7 @@ gridRange.addEventListener("input", () => {
   gridLabel.innerHTML = `Grid Size ${items} x ${items} (${
     items * items
   } cells)`;
-  console.log(items);
+
   generateGrid();
 });
 
@@ -60,8 +64,14 @@ reset.addEventListener("click", () => {
 
 darkener.addEventListener("click", () => {
   isDarkener = !isDarkener;
-
   isEraser = false;
+  console.log(isDarkener);
+  if (isDarkener) {
+    darkener.style.background = "#0075ff";
+    eraser.style.background = "";
+  } else {
+    darkener.style.background = "";
+  }
 });
 
 const resetCellColors = () => {

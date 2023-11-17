@@ -32,7 +32,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  gap: 1rem;
+  /* gap: 1rem; */
 }
 
 img,
@@ -41,6 +41,11 @@ svg,
 video {
   display: block;
   max-width: 100%;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .Cell {
@@ -55,6 +60,8 @@ video {
   height: 20rem;
   outline: 1px dotted black;
   background: lightgray;
+  align-self: center;
+  margin-top: 3rem;
 }
 
 #Brush-color {
@@ -71,4 +78,71 @@ video {
   /* border: 2px solid lightgray; */
   cursor: pointer;
   overflow: hidden;
+}
+
+.Grid-range-label {
+  width: 20rem;
+  align-self: center;
+
+  margin-top: 0.5rem;
+}
+
+#Grid-range {
+  width: 20rem;
+  align-self: center;
+  margin-top: 2rem;
+}
+
+.Brush-color-label {
+  font-weight: 700;
+}
+
+.Eraser {
+  font-weight: 700;
+}
+
+.Darkener {
+  font-weight: 700;
+}
+
+.Tools {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  overflow: hidden;
+  gap: 1rem;
+}
+
+.Tools-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+.Tools-wrapper:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.Brush-color-tools-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+.Reset {
+  background: rgb(219, 38, 38);
+  width: fit-content;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  align-self: center;
+  margin-top: 2rem;
 }

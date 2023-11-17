@@ -7,12 +7,19 @@
     <title></title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
   </head>
   <body>
     <!-- <div class="Run">Test</div> -->
     <h1>Etch-A-Sketch</h1>
     <div class="Grid"></div>
-    <label class="Grid-range-label" for="grid-range"></label>
 
     <input
       type="range"
@@ -22,12 +29,29 @@
       max="32"
       value="16"
     />
-    <label class="Brush-color-label" for="brush-color">Color Picker</label>
-    <div class="Brush-color-wrapper">
-      <input type="color" name="brush-color" id="Brush-color" value="#0075ff" />
+    <label class="Grid-range-label" for="grid-range"></label>
+    <div class="Tools">
+      <div class="Tools-wrapper Darkener">
+        <span class="material-symbols-outlined"> more_down </span>
+        <div>Darkener</div>
+      </div>
+      <div class="Brush-color-tools-wrapper">
+        <div class="Brush-color-wrapper">
+          <input
+            type="color"
+            name="brush-color"
+            id="Brush-color"
+            value="#0075ff"
+          />
+        </div>
+        <label class="Brush-color-label" for="brush-color">Brush Color</label>
+      </div>
+
+      <div class="Tools-wrapper Eraser">
+        <span class="material-symbols-outlined"> ink_eraser </span>
+        <div>Eraser</div>
+      </div>
     </div>
-    <div class="Eraser">Eraser</div>
-    <div class="Darkener">Darkener</div>
     <div class="Reset">Reset Grid</div>
   </body>
   <script src="app.js"></script>
