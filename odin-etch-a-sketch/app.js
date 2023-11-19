@@ -1,8 +1,3 @@
-// const Run = document.querySelector(".Run");
-// Run.addEventListener("click", () => {
-//   resetCellColors();
-// });
-
 const grid = document.querySelector(".Grid");
 const gridRange = document.querySelector("#Grid-range");
 const gridLabel = document.querySelector(".Grid-range-label");
@@ -119,7 +114,6 @@ const generateGrid = () => {
         filterValues[i] -= 0.1;
         filterValues[i] = Math.round(filterValues[i] * 10) / 10;
         gridCells[i].style.filter = `brightness(${filterValues[i]})`;
-        console.log("Success");
       }
       if (isEraser) {
         gridCells[i].style.background = "";

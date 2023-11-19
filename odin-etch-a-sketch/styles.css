@@ -32,7 +32,6 @@ body {
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  /* gap: 1rem; */
 }
 
 img,
@@ -75,7 +74,6 @@ h1 {
   height: 3rem;
   width: 3rem;
   border-radius: 3rem;
-  /* border: 2px solid lightgray; */
   cursor: pointer;
   overflow: hidden;
 }
@@ -83,7 +81,6 @@ h1 {
 .Grid-range-label {
   width: 20rem;
   align-self: center;
-
   margin-top: 0.5rem;
 }
 
