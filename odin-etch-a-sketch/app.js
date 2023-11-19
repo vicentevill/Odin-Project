@@ -65,7 +65,6 @@ reset.addEventListener("click", () => {
 darkener.addEventListener("click", () => {
   isDarkener = !isDarkener;
   isEraser = false;
-  console.log(isDarkener);
   if (isDarkener) {
     darkener.style.background = "#0075ff";
     eraser.style.background = "";
@@ -100,8 +99,11 @@ const generateGrid = () => {
   //Select cell elements
   const gridCells = document.querySelectorAll(".Cell");
 
-  //Add events for when the mouse moves over a cell
   for (let i = 0; i < gridCells.length; i++) {
+    //Reset filter brightness
+    gridCells[i].style.filter = `brightness(${filterValues[i]})`;
+
+    //Add events for when the mouse moves over a cell
     gridCells[i].addEventListener("mousemove", () => {
       if (isMouseDown && !isDarkener) {
         gridCells[i].style.background = `${brushColor.value}`;
