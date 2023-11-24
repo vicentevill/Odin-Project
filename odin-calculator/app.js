@@ -16,6 +16,7 @@ let expression = "";
 const appendNumber = (number) => {
   expression += `${number}`;
   console.log(expression);
+  console.log(eval(expression));
 };
 
 const appendOperator = (operator) => {
