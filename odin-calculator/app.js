@@ -1,31 +1,19 @@
 const numInput = document.querySelectorAll(".numInput");
 const backSpace = document.querySelector(".backspace");
+const result = document.querySelector(".result");
+const expressionDisplay = document.querySelector(".expression");
+const clear = document.querySelector(".clear");
+const operatorInputs = document.querySelectorAll(".operatorInput");
 const Test = document.querySelector(".Test");
-
-for (let i = 0; i < numInput.length; i++) {
-  numInput[i].addEventListener("click", () => {
-    appendNumber(numInput[i].innerHTML);
-  });
-}
-
-backSpace.addEventListener("click", () => {
-  backSpaceDelete();
-});
-
-Test.addEventListener("click", () => {
-  appendOperator(Test.innerHTML);
-});
 
 let expression = "";
 
 const appendNumber = (number) => {
   expression += `${number}`;
-  //   console.log(expression);
-  //   console.log(eval(expression));
 };
 
 const appendOperator = (operator) => {
-  if (expression) {
+  if (expression[expression.length - 1] != " ") {
     expression += ` ${operator} `;
   }
 };
@@ -36,20 +24,39 @@ const clearExpression = () => {
 
 appendNumber(1);
 appendOperator("+");
-// appendNumber(1);
 
-// console.log(eval(expression));
 const backSpaceDelete = () => {
-  console.log(expression);
-  console.log(expression.length);
-  console.log(expression[expression.length - 1]);
-  console.log(expression[expression.length - 1] === " ");
   if (expression[expression.length - 1] === " ") {
-    console.log("success");
     expression = expression.slice(0, -3);
-    console.log(expression);
-    console.log(expression.length);
   } else {
     expression = expression.slice(0, -3);
   }
 };
+
+for (let i = 0; i < numInput.length; i++) {
+  numInput[i].addEventListener("click", () => {
+    appendNumber(numInput[i].innerHTML);
+    expressionDisplay.innerHTML = expression;
+    result.innerHTML = eval(expression);
+  });
+}
+
+for (let i = 0; i < operatorInputs.length; i++) {
+  operatorInputs[i].addEventListener("click", () => {
+    appendOperator(operatorInputs[i].innerHTML);
+    expressionDisplay.innerHTML = expression;
+    result.innerHTML = eval(expression);
+  });
+}
+
+clear.addEventListener("click", () => {
+  clearExpression();
+  expressionDisplay.innerHTML = expression;
+});
+
+backSpace.addEventListener("click", () => {
+  backSpaceDelete();
+  expressionDisplay.innerHTML = expression;
+});
+
+expressionDisplay.innerHTML = expression;
