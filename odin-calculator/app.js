@@ -30,13 +30,27 @@ const appendDecimal = () => {
 
 const clearExpression = () => {
   expression = "";
+  expressionDisplay.innerHTML = "0";
+  result.innerHTML = "0";
 };
 
 const backSpaceDelete = () => {
-  if (expression[expression.length - 1] === " ") {
+  if (expression === "") {
+    return;
+  } else if (expression.length === 1) {
+    clearExpression();
+  } else if (expression[expression.length - 1] === " ") {
     expression = expression.slice(0, -3);
+    expressionDisplay.innerHTML = expression;
+    result.innerHTML = `${eval(expression)}`;
+  } else if (expression[expression.length - 2] === " ") {
+    expression = expression.slice(0, -4);
+    expressionDisplay.innerHTML = expression;
+    result.innerHTML = `${eval(expression)}`;
   } else {
     expression = expression.slice(0, -1);
+    expressionDisplay.innerHTML = expression;
+    result.innerHTML = `${eval(expression)}`;
   }
 };
 
@@ -44,7 +58,7 @@ for (let i = 0; i < numInput.length; i++) {
   numInput[i].addEventListener("click", () => {
     appendNumber(numInput[i].innerHTML);
     expressionDisplay.innerHTML = expression;
-    result.innerHTML = `Result: ${eval(expression)}`;
+    result.innerHTML = `${eval(expression)}`;
   });
 }
 
@@ -57,12 +71,10 @@ for (let i = 0; i < operatorInputs.length; i++) {
 
 clear.addEventListener("click", () => {
   clearExpression();
-  expressionDisplay.innerHTML = expression;
 });
 
 backSpace.addEventListener("click", () => {
   backSpaceDelete();
-  expressionDisplay.innerHTML = expression;
 });
 
 decimal.addEventListener("click", () => {

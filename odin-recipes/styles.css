@@ -1,3 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap");
+
+:root {
+  --white: white;
+  --black: black;
+  --grey: gray;
+  --accent-color: rgb(255, 79, 79);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  /* outline: dotted 2px; */
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  background: none;
+
+  color: var(--white);
+  font-family: "Roboto Mono", monospace;
+}
+
+html {
+  background: var(--black);
+}
+
+body {
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+ul {
+  font-weight: 700;
+}
+ul > li {
+  font-weight: 500;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+div,
+span,
+article,
+aside,
+section,
+main,
+nav,
+footer,
+header,
+form {
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+a {
+}
+
+label {
+  font-size: 0.8rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"] {
+  border-bottom: 3px solid;
+  padding: 0.25rem 0;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+button {
+  outline: 1px solid;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+}
+
+button:hover {
+  font-weight: 700;
+  outline: 2px solid;
+}
+
 img {
   width: 15rem;
 }
