@@ -9,16 +9,38 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   </head>
   <body>
-    <form action="">
-      <input class="titleInput" type="text" placeholder="Title" />
-      <input class="authorInput" type="text" placeholder="Author" />
-      <input
-        class="pageInput"
-        type="number"
-        name="pageInput"
-        id=""
-        placeholder="Current Page"
-      />
+    <h1 class="logo">Odin Library</h1>
+    <form class="addBook" action="">
+      <h1>Add Book</h1>
+      <div class="inputWrapper">
+        <label for="">Title</label>
+        <input
+          class="titleInput"
+          type="text"
+          placeholder="The Divine Comedy"
+          name="titleInput"
+        />
+      </div>
+      <div class="inputWrapper">
+        <label for="">Author</label>
+        <input
+          class="authorInput"
+          type="text"
+          placeholder="Dante Alighieri"
+          name="authorInput"
+        />
+      </div>
+      <div class="inputWrapper">
+        <label for="">Current Page</label>
+        <input
+          class="pageInput"
+          type="number"
+          name="pageInput"
+          value="0"
+          placeholder="0"
+        />
+      </div>
+
       <button class="submit" type="submit">Submit</button>
     </form>
 
