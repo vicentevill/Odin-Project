@@ -32,4 +32,6 @@ const randomMove = () => {
   gameBoard[openCells[randomCell]] = "O";
 };
 
+randomMove();
 renderGame();
+//make check for win function
