@@ -7,6 +7,21 @@ let playerMarker = "X";
 
 let cpuMarker = "O";
 
+const resetButton = document.querySelector(".reset");
+
+const showResetButton = () => {
+  resetButton.style.display = "unset";
+};
+
+resetButton.addEventListener("click", () => {
+  resetButton.style.display = "none";
+  result.innerHTML = "";
+  for (let i = 0; i < gameCells.length; i++) {
+    gameBoard[i] = "";
+  }
+  renderGame();
+});
+
 for (let i = 0; i < gameCells.length; i++) {
   gameBoard[i] = "";
   gameCells[i].addEventListener("click", () => {
@@ -45,7 +60,8 @@ const randomMove = () => {
   }
 
   let randomCell = Math.floor(Math.random() * openCells.length);
-  gameBoard[openCells[randomCell]] = "O";
+
+  gameBoard[openCells[randomCell]] = cpuMarker;
 };
 
 const checkWinner = (marker) => {
@@ -54,18 +70,21 @@ const checkWinner = (marker) => {
     gameBoard[1] === marker &&
     gameBoard[2] === marker
   ) {
+    showResetButton();
     return true;
   } else if (
     gameBoard[3] === marker &&
     gameBoard[4] === marker &&
     gameBoard[5] === marker
   ) {
+    showResetButton();
     return true;
   } else if (
     gameBoard[6] === marker &&
     gameBoard[7] === marker &&
     gameBoard[8] === marker
   ) {
+    showResetButton();
     return true;
   }
   //
@@ -74,12 +93,14 @@ const checkWinner = (marker) => {
     gameBoard[4] === marker &&
     gameBoard[6] === marker
   ) {
+    showResetButton();
     return true;
   } else if (
     gameBoard[0] === marker &&
     gameBoard[4] === marker &&
     gameBoard[8] === marker
   ) {
+    showResetButton();
     return true;
   }
   //
@@ -88,18 +109,21 @@ const checkWinner = (marker) => {
     gameBoard[3] === marker &&
     gameBoard[6] === marker
   ) {
+    showResetButton();
     return true;
   } else if (
     gameBoard[1] === marker &&
     gameBoard[4] === marker &&
     gameBoard[7] === marker
   ) {
+    showResetButton();
     return true;
   } else if (
     gameBoard[2] === marker &&
     gameBoard[5] === marker &&
     gameBoard[8] === marker
   ) {
+    showResetButton();
     return true;
   } else {
     return false;
@@ -110,7 +134,13 @@ const checkTie = () => {
   const allTrue = gameBoard.every((element) => !!element);
   if (allTrue && !checkWinner(playerMarker) && !checkWinner(cpuMarker)) {
     result.innerHTML = "It's a Tie.";
+    showResetButton();
   }
 };
 
 renderGame();
+
+//Reset button
+//Pick marker
+//Randomize who goes first
+//Pick difficulty
