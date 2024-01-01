@@ -1,48 +1,21 @@
+//Selectors
 const gameCells = document.querySelectorAll(".cell");
 const result = document.querySelector(".result");
+const markerIndicator = document.querySelector(".markerIndicator");
+const resetButton = document.querySelector(".reset");
+const changeMarker = document.querySelector(".changeMarker");
 
+//Variables
 let gameBoard = [];
 
 let playerMarker = "X";
 
 let cpuMarker = "O";
 
-const resetButton = document.querySelector(".reset");
-
+//Functions
 const showResetButton = () => {
   resetButton.style.display = "unset";
 };
-
-resetButton.addEventListener("click", () => {
-  resetButton.style.display = "none";
-  result.innerHTML = "";
-  for (let i = 0; i < gameCells.length; i++) {
-    gameBoard[i] = "";
-  }
-  renderGame();
-});
-
-for (let i = 0; i < gameCells.length; i++) {
-  gameBoard[i] = "";
-  gameCells[i].addEventListener("click", () => {
-    if (
-      !gameBoard[i] &&
-      !checkWinner(playerMarker) &&
-      !checkWinner(cpuMarker)
-    ) {
-      gameBoard[i] = playerMarker;
-      randomMove();
-      if (checkWinner(playerMarker)) {
-        result.innerHTML = "You Win!";
-      } else if (checkWinner(cpuMarker)) {
-        result.innerHTML = "You Lose.";
-      } else {
-        checkTie();
-      }
-      renderGame();
-    }
-  });
-}
 
 const renderGame = () => {
   for (let i = 0; i < gameCells.length; i++) {
@@ -86,9 +59,7 @@ const checkWinner = (marker) => {
   ) {
     showResetButton();
     return true;
-  }
-  //
-  else if (
+  } else if (
     gameBoard[2] === marker &&
     gameBoard[4] === marker &&
     gameBoard[6] === marker
@@ -102,9 +73,7 @@ const checkWinner = (marker) => {
   ) {
     showResetButton();
     return true;
-  }
-  //
-  else if (
+  } else if (
     gameBoard[0] === marker &&
     gameBoard[3] === marker &&
     gameBoard[6] === marker
@@ -138,9 +107,51 @@ const checkTie = () => {
   }
 };
 
+//Event Listeners
+changeMarker.addEventListener("click", () => {
+  if (playerMarker === "X") {
+    playerMarker = "O";
+    markerIndicator.innerHTML = `Marker: ${playerMarker}`;
+    cpuMarker = "X";
+  } else {
+    playerMarker = "X";
+    markerIndicator.innerHTML = `Marker: ${playerMarker}`;
+    cpuMarker = "O";
+  }
+});
+
+resetButton.addEventListener("click", () => {
+  resetButton.style.display = "none";
+  result.innerHTML = "";
+  for (let i = 0; i < gameCells.length; i++) {
+    gameBoard[i] = "";
+  }
+  renderGame();
+});
+
+for (let i = 0; i < gameCells.length; i++) {
+  gameBoard[i] = "";
+  gameCells[i].addEventListener("click", () => {
+    if (
+      !gameBoard[i] &&
+      !checkWinner(playerMarker) &&
+      !checkWinner(cpuMarker)
+    ) {
+      gameBoard[i] = playerMarker;
+      calculateMove();
+      if (checkWinner(playerMarker)) {
+        result.innerHTML = "You Win!";
+      } else if (checkWinner(cpuMarker)) {
+        result.innerHTML = "You Lose.";
+      } else {
+        checkTie();
+      }
+      renderGame();
+    }
+  });
+}
+
+//On Start
 renderGame();
 
-//Reset button
-//Pick marker
-//Randomize who goes first
-//Pick difficulty
+//Pick who goes first
