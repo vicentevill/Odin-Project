@@ -138,7 +138,7 @@ for (let i = 0; i < gameCells.length; i++) {
       !checkWinner(cpuMarker)
     ) {
       gameBoard[i] = playerMarker;
-      calculateMove();
+      randomMove();
       if (checkWinner(playerMarker)) {
         result.innerHTML = "You Win!";
       } else if (checkWinner(cpuMarker)) {
