@@ -130,3 +130,7 @@ button:hover {
 .reset {
   display: none;
 }
+
+.chooseTurnOrderWrapper {
+  display: none;
+}

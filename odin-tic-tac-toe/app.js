@@ -4,6 +4,11 @@ const result = document.querySelector(".result");
 const markerIndicator = document.querySelector(".markerIndicator");
 const resetButton = document.querySelector(".reset");
 const changeMarker = document.querySelector(".changeMarker");
+const first = document.querySelector(".first");
+const second = document.querySelector(".second");
+const chooseTurnOrderWrapper = document.querySelector(
+  ".chooseTurnOrderWrapper"
+);
 
 //Variables
 let gameBoard = [];
@@ -12,9 +17,22 @@ let playerMarker = "X";
 
 let cpuMarker = "O";
 
+let isFirst = true;
+
 //Functions
 const showResetButton = () => {
   resetButton.style.display = "unset";
+  chooseTurnOrderWrapper.style.display = "unset";
+  changeMarker.style.display = "unset";
+  if (isFirst) {
+    first.style.background = "var(--white)";
+    first.style.color = "var(--black)";
+    first.style.outlineColor = "var(--white)";
+  } else {
+    second.style.background = "var(--white)";
+    second.style.color = "var(--black)";
+    second.style.outlineColor = "var(--white)";
+  }
 };
 
 const renderGame = () => {
@@ -107,6 +125,25 @@ const checkTie = () => {
   }
 };
 
+const chooseTurnOrder = () => {
+  isFirst = !isFirst;
+  if (isFirst) {
+    first.style.background = "var(--white)";
+    first.style.color = "var(--black)";
+    first.style.outlineColor = "var(--white)";
+    second.style.background = "";
+    second.style.color = "var(--white)";
+    second.style.outlineColor = "var(--white)";
+  } else {
+    second.style.background = "var(--white)";
+    second.style.color = "var(--black)";
+    second.style.outlineColor = "var(--white)";
+    first.style.background = "";
+    first.style.color = "var(--white)";
+    first.style.outlineColor = "var(--white)";
+  }
+};
+
 //Event Listeners
 changeMarker.addEventListener("click", () => {
   if (playerMarker === "X") {
@@ -122,9 +159,14 @@ changeMarker.addEventListener("click", () => {
 
 resetButton.addEventListener("click", () => {
   resetButton.style.display = "none";
+  chooseTurnOrderWrapper.style.display = "none";
+  changeMarker.style.display = "none";
   result.innerHTML = "";
   for (let i = 0; i < gameCells.length; i++) {
     gameBoard[i] = "";
+  }
+  if (!isFirst) {
+    randomMove();
   }
   renderGame();
 });
@@ -132,6 +174,7 @@ resetButton.addEventListener("click", () => {
 for (let i = 0; i < gameCells.length; i++) {
   gameBoard[i] = "";
   gameCells[i].addEventListener("click", () => {
+    changeMarker.style.display = "none";
     if (
       !gameBoard[i] &&
       !checkWinner(playerMarker) &&
@@ -150,6 +193,14 @@ for (let i = 0; i < gameCells.length; i++) {
     }
   });
 }
+
+first.addEventListener("click", () => {
+  chooseTurnOrder();
+});
+
+second.addEventListener("click", () => {
+  chooseTurnOrder();
+});
 
 //On Start
 renderGame();
